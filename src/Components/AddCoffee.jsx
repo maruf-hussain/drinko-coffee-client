@@ -1,92 +1,121 @@
-import logo from '../assets/image/logo.png'
+import logo from '../assets/image/logo.png';
+import Swal from 'sweetalert2'
 const AddCoffee = () => {
-    const handleAddCoffee = event =>{
+    
+    const handleAddCoffee = event => {
         event.preventDefault();
+
         const form = event.target;
 
         const name = form.name.value;
-        const quantty = form.quantty.value;
+        const quantity = form.quantity.value;
         const supplier = form.supplier.value;
-        const tasty = form.tasty.value;
+        const price = form.price.value;
         const category = form.category.value;
         const details = form.details.value;
         const photo = form.photo.value;
-        const newCoffee = {name,quantty,supplier,tasty,category,details,photo};
+
+        const newCoffee = { name, quantity, supplier, price, category, details, photo }
+
         console.log(newCoffee);
+
+        // send data to the server
+        fetch('http://localhost:5000/coffee', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCoffee)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Coffee Added Succesfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  })
+            }
+        })
     }
     return (
-        <div className="bg-yellow-100 p-24">
-            <div  className="text-4xl font-extrabold text-red-950  rounded-lg  mb-24  bg-orange-50 p-4 flex justify-center ">
+        <div className="bg-yellow-50 p-24">
+            <div  className="text-4xl font-extrabold text-white rounded-lg  mb-24  bg-yellow-900 p-4 flex justify-center ">
                 <img className='w-[80px] h-[70px] mr-10 flex self-center' src={logo} alt="" />
             <h1 className=' flex self-center font-extrabold font-serif '>Drinko Coffee Shop</h1>
             </div>
             
-            <form onSubmit={handleAddCoffee} className="p-8 rounded-lg bg-orange-50 font-extrabold">
-                <div className="md:flex">
+            <form onSubmit={handleAddCoffee} className="p-8 rounded-lg bg-yellow-50 font-extrabold">
+            <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Coffee Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Coffee Name" className="input input-bordered w-full " />
+                            <input type="text" name="name" placeholder="Coffee Name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
-                            <span className="label-text">Coffee Quantity</span>
+                            <span className="label-text">Available Quantity</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Coffee Quantity" className="input input-bordered w-full " />
+                            <input type="text" name="quantity" placeholder="Available Quantity" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
-                <div className="md:flex">
+                {/* form supplier row */}
+                <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
-                            <span className="label-text">Supplier</span>
+                            <span className="label-text">Supplier Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Supplier" className="input input-bordered w-full " />
+                            <input type="text" name="supplier" placeholder="Supplier Name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
-                            <span className="label-text">Tasty</span>
+                            <span className="label-text">Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Tasty" className="input input-bordered w-full " />
+                            <input type="text" name="price" placeholder="Price" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
-                <div className="md:flex">
+                {/* form category and details row */}
+                <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Details</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" placeholder="Details" className="input input-bordered w-full " />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
                             <span className="label-text">Category</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Category" className="input input-bordered w-full " />
+                            <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" />
+                        </label>
+                    </div>
+                    <div className="form-control md:w-1/2 ml-4">
+                        <label className="label">
+                            <span className="label-text">Details</span>
+                        </label>
+                        <label className="input-group">
+                            <input type="text" name="details" placeholder="Details" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
-                <div className="form-control md:w-full">
+                {/* form Photo url row */}
+                <div className="mb-8">
+                    <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Photo Url</span>
+                            <span className="label-text">Photo URL</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Photo Url" className="input input-bordered w-full " />
+                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
                         </label>
                     </div>
-
-
-<input type="submit" value="Add Coffee" className="btn btn-block mt-4 text-white bg-yellow-700" />
+                </div>
+                <input type="submit" value="Add Coffee" className="btn btn-block text-cyan-50 bg-yellow-900" />
             </form>
         </div>
     );
