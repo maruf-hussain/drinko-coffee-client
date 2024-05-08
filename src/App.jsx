@@ -21,9 +21,9 @@ function App() {
   <div className="dropdown dropdown-hover ">
   <div tabIndex={0} role="button" className="btn text-2xl m-1"><FaBars />
 </div>
-  <ul tabIndex={0} className="dropdown-content z-[1]  bg-base-200 menu p-4 shadow rounded-box w-36">
-  <Link className='bg-yellow-800 text-white text-center p-2 rounded-md font-bold' to='/addCoffee'>Add Coffee</Link>
-  <Link className='bg-yellow-800 text-white p-2 mt-2 rounded-md font-bold' to='/updateCoffee'>Update Coffee</Link>
+  <ul tabIndex={0} className="dropdown-content z-[1]  bg-base-200 menu p-4 rounded-box w-36">
+  <Link className='bg-yellow-900 text-white text-center p-2 rounded-md font-bold' to='/addCoffee'>Add Coffee</Link>
+  <Link className='bg-yellow-900 text-white p-2 mt-2 rounded-md font-bold' to='/updateCoffee'>Update Coffee</Link>
    
   </ul>
 </div>
