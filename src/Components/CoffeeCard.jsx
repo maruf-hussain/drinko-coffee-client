@@ -2,6 +2,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -62,8 +63,11 @@ const CoffeeCard = ({ coffee }) => {
                         </button>
                     </div>
                     <div>
+                        <Link to={`updateCoffee/${_id}`}>
                         <button class="btn mt-2 text-white text-xl bg-green-500"><FaEdit />
                         </button>
+                        </Link>
+                        
                     </div>
                     <div>
                         <button onClick={() => handleDeleteCoffee(_id)} class="btn mt-2 text-white text-xl bg-red-500 "><MdDeleteForever />

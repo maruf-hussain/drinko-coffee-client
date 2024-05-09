@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 
 
 function App() {
+ 
   const coffees = useLoaderData();
 
   return (
@@ -23,7 +24,7 @@ function App() {
 </div>
   <ul tabIndex={0} className="dropdown-content z-[1]  bg-base-200 menu p-4 rounded-box w-36">
   <Link className='bg-yellow-900 text-white text-center p-2 rounded-md font-bold' to='/addCoffee'>Add Coffee</Link>
-  <Link className='bg-yellow-900 text-white p-2 mt-2 rounded-md font-bold' to='/updateCoffee'>Update Coffee</Link>
+  <Link className='bg-yellow-900 hover:text-red-900  text-white p-2 mt-2 rounded-md font-bold' to=''>Update Coffee</Link>
    
   </ul>
 </div>

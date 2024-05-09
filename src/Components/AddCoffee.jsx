@@ -41,13 +41,13 @@ const AddCoffee = () => {
         })
     }
     return (
-        <div className="bg-yellow-50 p-24">
+        <div className="p-24">
             <div  className="text-4xl font-extrabold text-white rounded-lg  mb-24  bg-yellow-900 p-4 flex justify-center ">
                 <img className='w-[80px] h-[70px] mr-10 flex self-center' src={logo} alt="" />
-            <h1 className=' flex self-center font-extrabold font-serif '>Drinko Coffee Shop</h1>
+            <h1 className=' flex self-center font-extrabold font-serif '>Add Coffee</h1>
             </div>
             
-            <form onSubmit={handleAddCoffee} className="p-8 rounded-lg bg-yellow-50 font-extrabold">
+            <form onSubmit={handleAddCoffee} className="p-8 rounded-lg bg-slate-100 font-extrabold">
             <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
@@ -115,7 +115,7 @@ const AddCoffee = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Coffee" className="btn btn-block text-cyan-50 bg-yellow-900" />
+                <input type="submit" value="Add Coffee" className="btn text-2xl btn-block text-cyan-50 bg-yellow-900" />
             </form>
         </div>
     );
