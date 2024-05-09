@@ -31,7 +31,7 @@ function App() {
   </div>
   
       </div>
-     <div className='grid md:grid-cols-3  gap-8 mx-auto'>
+     <div className='grid md:grid-cols-2 sm:grid-cols-1  gap-8 mx-auto'>
      {
       coffees.map(coffee => <CoffeeCard
       key={coffee._id}

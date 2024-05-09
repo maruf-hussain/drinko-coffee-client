@@ -22,7 +22,7 @@ const CoffeeCard = ({ coffee }) => {
             if (result.isConfirmed) {
 
                 // ..........Data from DB...Detete Oparation fetch....................
-                fetch(`http://localhost:5000/coffee/${_id}`,{
+                fetch(` https://drinko-coffee-server-6vrck7a56-marufhussains-projects.vercel.app/coffee/${_id}`,{
                     method: 'DELETE'
                 })
                     .then(res => res.json())
